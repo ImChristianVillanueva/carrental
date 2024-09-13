@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Car rental portal</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta content="Author" name="WebThemez">
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/font/font-awesome.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style media="screen">
+    *,
+    *:before,
+    *:after {
+        padding: 0;
+        margin: 0;
+    }
+
+    .popup {
+    background: rgba(0, 0, 0, 0.7);
+    width: 60%;
+    height: 60%;
+    padding: 1% 1%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    font-family: "Poppins", sans-serif;
+    display: none;
+    text-align: center;
+    z-index: 9999;
+}
+
+.popup .container {
+    width: 100%; /* Fixed width */
+    height: 100%; /* Fixed height */
+    max-width: 100%; /* Make sure the image doesn't exceed the container width */
+    max-height: 100%; /* Make sure the image doesn't exceed the container height */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.popup img {
+    height: 100%;
+    width: 100%;
+    border:2px solid white;
+    max-width: 70%; /* Make the image responsive */
+    max-height: 70%; /* Make the image responsive */
+    display: block; /* Remove any whitespace below the image */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.popup button {
+    display: block;
+    margin: 0 0 10px auto;
+    font-size: 30px;
+    color: #ffffff;
+    background: none;
+    width: 10%;
+    height: 10%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+}
+
+    </style>
+
+</head>
+
+<body id="body">
+    <header id="header">
+    <div class="container">
+        <div class="row">
+
+            <div id="logo" class="pull-left">
+                <h1><a href="index.php" id="body" class="scrollto"><span style="color: red;">Tempo | </span>Rental</a>
+                </h1>
+                <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+            </div>
+            <div class="pull-left ml-2">
+                <!-- SEARCH FORM -->
+                <form class="form-inline " action="search.php" method="post">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="text" name="searchdata"
+                            placeholder="Search Car" aria-label="Search" required="true">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" style="background-color: black;" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+
+
+                    <li class="menu-active"><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="car_list.php">Car list</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
+                    <div class="header_info" style="margin-top: 1.3%; padding-left: 1%; width: 165px; ">
+                        <div class="header_widgets">
+                                                        <!-- <li> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a></li> -->
+                                                    </div>
+                    </div>
+                                    </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->  
+
+    
+
+
+    <section id="hero" class="clearfix" style="background-image: url('bg-background.jpg');">
+        <div class="container">
+
+            <div class="hero-banner">
+            </div>
+
+            <div class="hero-content">
+                <div>
+                                        <a href="#loginform" data-toggle="modal" data-dismiss="modal" class="btn-banner">Login /
+                        Register</a>
+                                    </div>
+            </div>
+
+        </div>
+    </section><!-- #Hero -->
+
+
+
+    <main id="main">
+        <div class="popup">
+        <button id="close"  style="font-size:5vw; ">&times;</button>
+        <img src="img/bannerimages/banner.png"></img>
+    
+    </div>
+                    
+    <!--Script-->
+<script type="text/javascript">
+    var body = document.querySelector("body");
+    var popup = document.querySelector(".popup");
+    var closeButton = document.querySelector("#close");
+
+    function enableScroll() {
+        body.style.overflow = "auto";
+    }
+
+    // Open the popup after a delay
+    window.addEventListener("load", function() {
+        setTimeout(function() {
+            popup.style.display = "block";
+        }, 2000);
+    });
+
+    closeButton.addEventListener("click", function() {
+        popup.style.display = "none";
+    });
+</script>
+        <!--==========================
+      Services Section
+      ============================-->
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="font-family:'Tahoma',sans-serif">Find the Best Car for you</h2>
+                    <p style="font-family:'Tahoma',sans-serif">Once choosing a car rental, you must consider several
+                        factors to make sure that you have made the best decision.</p>
+                </div>
+
+                <div class="row">
+                                        <div class="col-lg-4">
+                        <div class="box wow  fadeInLeft">
+                            <div class="car-info-box">
+                                <center>
+                                    <a href=""><img
+                                            src="img/vehicleimages/chevrolet-blazer-2021.jpg"
+                                            style="height: 180px; border-bottom:  solid; border-color: rgb(129, 195, 247); width: 280px; max-height: 180px;"
+                                            class="img-responsive" alt="image">
+
+                                        <ul style=" width: 280px;  background-color: #2196f3;">
+                                            <li><i class="fa fa-car"
+                                                    aria-hidden="true"></i>Petrol                                            </li>
+                                            <li><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i>2021                                                Model</li>
+                                            <li><i class="fa fa-user"
+                                                    aria-hidden="true"></i>5                                                seats</li>
+                                        </ul>
+                                    </a>
+                                    <div class="car-title-m">
+                                        <h3 ><a
+                                                href="c">
+                                                Chevy Blazer</a></h3>
+                                        <h7 class="price" style="  float:left; margin-left: 5%;">Price Per Day : ₱
+                                            4,000.00</h7>
+
+                                    </div>
+                                    <div class="inventory_info_m " style="height: 100px;">
+                                        <p>the 2021 Blazer is a mostly ordinary crossover with exaggerated stylin</p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4">
+                        <div class="box wow  fadeInLeft">
+                            <div class="car-info-box">
+                                <center>
+                                    <a href="car_details.php?vhid=40"><img
+                                            src="img/vehicleimages/toyota-vios-2.jpg"
+                                            style="height: 180px; border-bottom:  solid; border-color: rgb(129, 195, 247); width: 280px; max-height: 180px;"
+                                            class="img-responsive" alt="image">
+
+                                        <ul style=" width: 280px;  background-color: #2196f3;">
+                                            <li><i class="fa fa-car"
+                                                    aria-hidden="true"></i>Petrol                                            </li>
+                                            <li><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i>2020                                                Model</li>
+                                            <li><i class="fa fa-user"
+                                                    aria-hidden="true"></i>5                                                seats</li>
+                                        </ul>
+                                    </a>
+                                    <div class="car-title-m">
+                                        <h3 ><a
+                                                href="car_details.php?vhid=40">
+                                                Vios - Sedan</a></h3>
+                                        <h7 class="price" style="  float:left; margin-left: 5%;">Price Per Day : ₱
+                                            3,500.00</h7>
+
+                                    </div>
+                                    <div class="inventory_info_m " style="height: 100px;">
+                                        <p>The Toyota Vios has been one of the best-sellers in the Philippines si</p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-lg-4">
+                        <div class="box wow  fadeInLeft">
+                            <div class="car-info-box">
+                                <center>
+                                    <a href="car_details.php?vhid=49"><img
+                                            src="img/vehicleimages/Ford-Explorer-1.jpg"
+                                            style="height: 180px; border-bottom:  solid; border-color: rgb(129, 195, 247); width: 280px; max-height: 180px;"
+                                            class="img-responsive" alt="image">
+
+                                        <ul style=" width: 280px;  background-color: #2196f3;">
+                                            <li><i class="fa fa-car"
+                                                    aria-hidden="true"></i>Gas95                                            </li>
+                                            <li><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i>2022                                                Model</li>
+                                            <li><i class="fa fa-user"
+                                                    aria-hidden="true"></i>6                                                seats</li>
+                                        </ul>
+                                    </a>
+                                    <div class="car-title-m">
+                                        <h3 ><a
+                                                href="car_details.php?vhid=49">
+                                                Explorer</a></h3>
+                                        <h7 class="price" style="  float:left; margin-left: 5%;">Price Per Day : ₱
+                                            2,400.00</h7>
+
+                                    </div>
+                                    <div class="inventory_info_m " style="height: 100px;">
+                                        <p>he Ford Explorer is a range of SUVs manufactured by Ford Motor Company</p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="section-padding testimonial-section parallex-bg">
+        <div class="container div_zindex" style="height: 400px;">
+            <div class="section-header white-text text-center" style="height: 50px">
+                <h2 style="font-family:'Tahoma',sans-serif">Our Satisfied Customers</h2>
+            </div>
+            <div class="row">
+                <div id="testimonial-slider" class="owl-carousel owl-theme" style="opacity: 10;display: none !important;">
+                    
+
+                    <div class="testimonial-m" style="margin-top: 3%;">
+                        <div class="testimonial-img" style="width: 30%; height:  50%;"> <img
+                                src="uploads/64618e4112069.png" alt=""
+                                style="margin-left: 5px;width: 155px; height: 140px;"/> </div>
+                        <div class="testimonial-content" style=" width: 100%;  border: 2px solid black;">
+                            <div class="testimonial-heading">
+                                <h5>Karen Cordova</h5>
+                                <p>&quot;I will recommend you to my colleagues.&quot;</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="testimonial-m" style="margin-top: 3%;">
+                        <div class="testimonial-img" style="width: 30%; height:  50%;"> <img
+                                src="uploads/64618e67759cf.jpg" alt=""
+                                style="margin-left: 5px;width: 155px; height: 140px;"/> </div>
+                        <div class="testimonial-content" style=" width: 100%;  border: 2px solid black;">
+                            <div class="testimonial-heading">
+                                <h5>Amin Arias</h5>
+                                <p>&quot;I don't know what else to say. Just what I was looking for. Thank You! I love your system.&quot;</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="testimonial-m" style="margin-top: 3%;">
+                        <div class="testimonial-img" style="width: 30%; height:  50%;"> <img
+                                src="uploads/64618ef56d68f.jpg" alt=""
+                                style="margin-left: 5px;width: 155px; height: 140px;"/> </div>
+                        <div class="testimonial-content" style=" width: 100%;  border: 2px solid black;">
+                            <div class="testimonial-heading">
+                                <h5> Rex Long</h5>
+                                <p>&quot;I couldn't have asked for more than this.&quot;</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="testimonial-m" style="margin-top: 3%;">
+                        <div class="testimonial-img" style="width: 30%; height:  50%;"> <img
+                                src="uploads/64618f1616d90.jpg" alt=""
+                                style="margin-left: 5px;width: 155px; height: 140px;"/> </div>
+                        <div class="testimonial-content" style=" width: 100%;  border: 2px solid black;">
+                            <div class="testimonial-heading">
+                                <h5>India Abbott</h5>
+                                <p>I am really satisfied with my car rental. Car rental is exactly what our business has been lacking. We were treated like royalty</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="testimonial-m" style="margin-top: 3%;">
+                        <div class="testimonial-img" style="width: 30%; height:  50%;"> <img
+                                src="uploads/64618f5791da1.jpg" alt=""
+                                style="margin-left: 5px;width: 155px; height: 140px;"/> </div>
+                        <div class="testimonial-content" style=" width: 100%;  border: 2px solid black;">
+                            <div class="testimonial-heading">
+                                <h5>Evie Roth</h5>
+                                <p>&quot;We're loving it. I am completely blown away. I would also like to say thank you to all your staff. Absolutely wonderful!&quot;
+</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+        Dark Overlay
+        <div class="dark-overlay"></div>
+
+    </section>
+   <section id="call-to-action" class="wow fadeInUp" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 text-center text-lg-left" >
+                        <h3 class="cta-title" style="font-family:'Tahoma',sans-serif">Get Our Service</h3>
+                        <p  style="font-size: calc(10px + 0.390625vw); text-indent: 50px; text-align: justify;"
+                         class="cta-text" style=" font-family:'Tahoma',sans-serif">Tempo | Rental are an experienced
+                            and widely recognized brand in Car Rental segment, having catered to some of the top
+                            Corporates in Hyderabad. Our decade long expertise has allowed us to streamline this
+                            operation in terms of systems and qualities. Tempo | Rental is concentrated into car rental
+                            services. </p>
+                    </div>
+                    <div class="col-lg-3 cta-btn-container text-center">
+                        <a   style="font-size: calc(15px + 0.390625vw);"class="cta-btn align-middle" href="contact.php"
+                            style="font-family:'Tahoma',sans-serif">Contact Us</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>  <!-- #call-to-action -->
+    <!--==========================
+    Footer
+    ============================-->
+    <footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-3">
+          <h6 style="font-family:'Tahoma',sans-serif">About Us</h6>
+          <ul>
+
+
+          <li style="font-family:'Tahoma',sans-serif"><a href="about.php">About Us</a></li>
+            <li style="font-family:'Tahoma',sans-serif"><a href="faq.php">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-3">
+          <h6 style="font-family:'Tahoma',sans-serif">Terms and Conditions</h6>
+          <ul>
+
+
+          <li style="font-family:'Tahoma',sans-serif"><a href="tc.php">Read terms and conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <h6 style="font-family:'Tahoma',sans-serif">Subscribe Newsletter</h6>
+          <div class="newsletter-form">
+            <form method="post">
+              <div class="form-group">
+                <input type="email" name="subscriberemail" class="form-control newsletter-input" style="font-family:'Tahoma',sans-serif" required placeholder="Enter Email Address" />
+              </div>
+              <button type="submit" name="emailsubscibe" class="btn btn-block" style="font-family:'Tahoma',sans-serif">Subscribe <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+            </form>
+            <p class="subscribed-text" style="font-family:'Tahoma',sans-serif">*We send great deals and latest auto news to our subscribed users very week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-push-6 text-right">
+          <div class="footer_widget">
+           
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+    <!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!--Login-Form -->
+    
+<div class="modal fade" id="loginform">
+  <div class="modal-dialog" role="document" style="">
+    <div class="modal-content" style=" width: 100%; background: rgb(33,150,243);">
+      <div class="modal-header">
+        <h3 class="modal-title" style="font-size: calc(25px + 0.390625vw); margin-top: 2%; margin-left: 25%; ">
+          Login Panel</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+            style="font-size: calc(50px + 0.390625vw); ">&times;</span></button>
+      </div>
+      <div class="modal-body"
+        style="background: rgb(33,150,243); background: linear-gradient(180deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 100%);">
+        <div class="row">
+          <div class="login_wrap">
+            <div class="col-md-12 col-sm-6">
+              <form method="post" style="width: 100%;">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" placeholder="Email address*"
+                    value="">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password*" value="">
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="remember" name="remember" >
+                  <label for="remember">Remember Password</label>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="login" value="Login" class="btn btn-block">
+                </div>
+                <div class="form-group">
+                  <p>Don't have an account? <a href="#signupform" data-toggle="modal" data-dismiss="modal">Signup
+                      Here</a></p>
+                  <p style="">Don't Remember Password? <a href="#forgotpassword" data-toggle="modal"
+                      data-dismiss="modal">Forgot Password</a></p>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--/Login-Form -->
+
+    <!--Register-Form -->
+    
+
+<script>
+function checkAvailability() {
+    $("#loaderIcon").show();
+    jQuery.ajax({
+        url: "check_availability.php",
+        data: 'emailid=' + $("#emailid").val(),
+        type: "POST",
+        success: function(data) {
+            $("#user-availability-status").html(data);
+            $("#loaderIcon").hide();
+        },
+        error: function() {}
+    });
+}
+</script>
+<script type="text/javascript">
+function valid() {
+    if (document.signup.password.value != document.signup.confirmpassword.value) {
+        alert("Password and Confirm Password Field do not match  !!");
+        document.signup.confirmpassword.focus();
+        return false;
+    }
+    return true;
+}
+</script>
+
+<script>
+function previewImage() {
+    var preview = document.getElementById('preview');
+    var file = document.getElementById('image').files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+        preview.src = reader.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+}
+</script>
+
+<div class="modal fade" id="signupform">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content" style="width: 100%; background: rgb(33,150,243);">
+
+            <div class="modal-header">
+                <h3 class="modal-title"  style="font-size: calc(25px + 0.390625vw); margin-top: 2%; margin-left: 35%; ">Sign Up</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                         style="font-size: calc(50px + 0.390625vw); ">&times;</span></button>
+            </div>
+
+            <div class="modal-body"
+                style="background: rgb(33,150,243); background: linear-gradient(180deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 100%); 
+
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;">
+
+                <div class="row">
+
+                    <div class="signup_wrap">
+
+                        <div class="col-md-12 col-sm-6">
+
+                            <form method="post" name="signup" onSubmit="return valid();" enctype="multipart/form-data" style="width: 100%;">
+
+                                <div class="form-group">
+                                    <label for="image" >Choose Image:</label>
+                                    <input type="file" class="form-control-file" id="image" name="image"
+                                        onchange="previewImage();" required >
+                                    <center>
+                                        <img id="preview"  style="padding: 3%; width: 50%; height: 50%; border-radius:50%;">
+
+                                    </center>
+                                </div>
+                                <!-- FORM FOR NAME -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input type="text" class="form-control" name="fullname" placeholder="Full Name"
+                                        required="required">
+
+                                </div>
+                                <!-- FORM FOR GENDER -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <select class="selectpicker" name="gender" required >
+                                        <option class="gender" > Gender<br><br></option>
+                                                                                <option value="1">
+                                            Male</option>
+                                                                                <option value="2">
+                                            Female</option>
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="dob" required="required"
+                                        >
+                                </div>
+
+                                <!-- FORM FOR MOBILE NO. -->
+                                <div class="form-group"style="width: 100%; ">
+
+                                    <input type="tel" class="form-control" name="mobileno" placeholder="Mobile Number"
+                                        minlength="11" maxlength="11" required="required">
+
+                                </div>
+
+                                <!-- FORM FOR STREET NO. -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input type="text" class="form-control" name="street" placeholder="Street"
+                                        required="required">
+                                </div>
+                                <!-- FORM FOR BARANGGAY -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input type="text" class="form-control" name="brgy" placeholder="Barangay"
+                                        required="required">
+
+                                </div>
+
+                                <!-- FORM FOR CITY -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input  type="text" class="form-control" name="city" placeholder="City"
+                                        required="required">
+
+                                </div>
+
+                                <!-- FORM FOR EMAIL -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input  type="email" class="form-control" name="emailid" id="emailid"
+                                        onBlur="checkAvailability()" placeholder="Email Address" required="required">
+                                    <span id="user-availability-status" style="font-size:12px;"></span>
+
+                                </div>
+
+                                <!-- FORM FOR PASSWORD -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input  type="password" class="form-control" name="password" placeholder="Password"
+                                        required="required">
+
+                                </div>
+
+                                <!-- FORM FOR CONFIRM PASS -->
+                                <div class="form-group" style="width: 100%; ">
+
+                                    <input  type="password" class="form-control" name="confirmpassword"
+                                        placeholder="Confirm Password" required="required">
+
+                                </div>
+
+                                <!-- FORM FOR TERMS -->
+                                <div class="form-group checkbox" style="width: 100%; ">
+
+                                    <input type="checkbox" id="terms_agree" required="required">
+                                    <label for="terms_agree">I Agree with <a href="#" data-toggle="modal"
+                                            data-target="#exampleModalLong">Terms and Conditions</a></label>
+
+                                </div>
+
+                                <!-- TERMS -->
+                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+                                    style="
+    max-width: calc(500vh - 200px);">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content"
+                                            style=" width: 100%; background: rgb(33,150,243);">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"
+                                                    style="font-size: 25px;">Terms And Condition
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body"
+                                                style="background: rgb(33,150,243); background: linear-gradient(180deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 100%); 
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;">
+                                                <p>All Visitors/Users/Customers Of Paras Car Rental are Permitted to
+                                                    Visit/Use/Book On And Via Our Website Solely Subject to full
+                                                    acceptance of these Terms AND Conditions. Please Note That, All
+                                                    links herein are an Integral Part of These Terms And Conditions. We
+                                                    rerserve the right, at our discretion, to update and/or revise the
+                                                    conditions and terms herein. Therefore, Please Check Often For Any
+                                                    Updates And Amendments.<br><br><b>TERMS OF USE</b><br>
+
+                                                    Subject to all the terms and conditions contained herein and in
+                                                    consideration thereof, the RENTER acknowledges and agrees to the
+                                                    following:
+                                                    <br><br>
+                                                    <b>1. PRIVACY POLICY:</b> Paras Car Rental is committed to
+                                                    protecting your privacy. We promise to keep all the information that
+                                                    you share with us confidential. We only collect personal information
+                                                    from customers in order to process billing, fulfill service and
+                                                    provide a personal and customised experience. We do not share your
+                                                    information with any outside parties.<br>
+
+                                                    <b>2. CUSTOMER IDENTIFICATION POLICY: </b>Paras Car Rental collects
+                                                    and processes your personal information, which refers to any freely
+                                                    given, specific, informed indication of will, whereby you agree to
+                                                    the collection and processing of your personal, sensitive or
+                                                    privileged information. The Company processes your personal
+                                                    information in accordance with the law, this Privacy Policy, Terms
+                                                    and Conditions, and other legal instruments which you may have
+                                                    entered into with Paras Car Rental.<br>
+
+                                                    <b>3. RESERVATION:</b> Paras Car Rental will require 50% reservation
+                                                    fee, depending on the service availed.<br>
+
+                                                    <b>4. CANCELLATION POLICY:</b>
+                                                    *Cancellation to rental schedule or No Show shall be charged 100% of
+                                                    the total rental.<br>
+
+                                                    <b>5. REFUND AND FINANCE</b> charges will be shouldered by the
+                                                    RENTER.<br>
+                                                    <b>6. TERMS OF PAYMENT</b> – Cash, Credit Card or Prepaid Payment
+                                                    Only.<br>
+                                                    <b>7. All UNCONSUMED</b> will not be refunded.<br>
+                                                    <b>8. RENTAL REQUIREMENTS</b> will be collected on the rental date.
+                                                    Lacking requirement will forfeit your reservation. Our
+                                                    representative may ask for an additional Identification Card for
+                                                    security purposes.<br>
+                                                    <b>9. RENTAL HOURS</b> – A day’s rental is equivalent to 24 hours.
+                                                    Excess hours shall be charged at 1/6 of the daily rate. If rental
+                                                    covers 6 hours or more (up to 24 hours) the daily rate shall be
+                                                    applied. Weekly or monthly rentals cut-off time is 12:00 midnight.
+                                                    For weekly or long period rentals, every endeavor will be made to
+                                                    retain the same car and chauffeur. During such period Paras Car
+                                                    Rental reserves the right to substitute any other similar category
+                                                    car and chauffeur according to the exigencies of the services (e.g.
+                                                    Car due for check-up shall be recalled and replaced by any available
+                                                    unit.)<br>
+
+                                                    <b>10. Gasoline, Parking Fees, Traffic Violations and Toll Fees</b>
+                                                    are shouldered by the Renter.<br>
+
+                                                    <b>11. RENTER </b>shall be liable to pay interest at the rate of
+                                                    twenty-four percent (24%) per anum in case of delay in payment of
+                                                    rental fee within the period provided. Immediately upon return of
+                                                    the vehicle. Should the matter be referred to a lawyer, it is agreed
+                                                    that the RENTER shall pay attorney’s fees at the rate of 25% of the
+                                                    amount due but in the case shall it be less than P5,000.00, in
+                                                    addition to the cost of suit.<br>
+
+                                                    <b>12. RENTER</b> hereby consents that in case of suit arising out
+                                                    of or in connection with the agreement, the venue is agreed to be at
+                                                    the place where the unit in question was initially transacted, i.e.
+                                                    the Paras Car Rental branch/office where the unit was rented
+                                                    from.<br><br>
+
+                                                    <b>That said vehicle shall not be operated in the following cases to
+                                                        with:</b><br>
+
+                                                    *To travel to the mountain trail and other areas where roads are
+                                                    impassable for cars or van and to ferry the rented vehicle.<br>
+                                                    *High speed or negligent driving that provokes vehicular accident,
+                                                    damage or breakdown.<br>
+                                                    *To carry passengers or property or other forms of personal
+                                                    belongings or goods for consideration.<br>
+                                                    *Carrying items with foul smell or that can stain the interior of
+                                                    the vehicle.<br>
+                                                    *By any person who has a pending case or charges otherwise convicted
+                                                    of a crime against the public property or to carry persons with
+                                                    dubious character.<br>
+                                                    *To propel or tow any other vehicles, trailer or other heavy things
+                                                    with or without wheels.
+                                                    *By any person who is or have a symptom or previous record of mental
+                                                    illness, or by any person who is under the influence of liquor and
+                                                    drugs.<br>
+                                                    *To transport goods in violation of customs rules and regulations or
+                                                    in any other manner deemed illegal.<br>
+                                                    *By any person other than the RENTER or declared driver in this
+                                                    agreement, unless Paras Car Rental permission is first obtained in
+                                                    writing. It is understood that in the absence of written consent
+                                                    from the Paras Car Rental the RENTER is ipso facto deemed to have
+                                                    violated this agreement.<br>
+                                                    *A person who is less than 23 years of age, whether he or she has a
+                                                    driver’s license or not.
+
+                                                <p style="float: right;"><b>Click Anywhere to Close</b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- SUBMIT BUTTON  -->
+                                <center>
+                                    <div class="form-group" style="width: 50%;">
+                                        <input type="submit" value="Sign Up" name="signup" id="submit"
+                                            class="btn btn-block">
+                                    </div>
+                                </center>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--/Register-Form -->
+
+    <!--Forgot-password-Form -->
+      <script type="text/javascript">
+function valid()
+{
+if(document.chngpwd.newpassword.value!= document.chngpwd.confirmpassword.value)
+{
+alert("New Password and Confirm Password Field do not match  !!");
+document.chngpwd.confirmpassword.focus();
+return false;
+}
+return true;
+}
+</script>
+<div class="modal fade" id="forgotpassword">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 100%; background: rgb(33,150,243);">
+      <div class="modal-header">
+
+        <h3 class="modal-title" style="font-size: calc(25px + 0.390625vw);">Password Recovery</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: calc(50px + 0.390625vw);">&times;</span></button>
+      </div>
+      <div class="modal-body" style="background: rgb(33,150,243); background: linear-gradient(180deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 100%); 
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;">
+        <div class="row"  style="width: 100%;">
+          <div class="forgotpassword_wrap"style="width: 100%;">
+            <div class="col-md-12"style="width: 100%;">
+              <div class="text-center">
+              <form name="chngpwd" method="post" onSubmit="return valid();" style="width: 100%;">
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Your Email address*" required="">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="mobile" class="form-control" placeholder="Your Reg. Mobile*" required="">
+                </div>
+                <div class="form-group">
+                  <input  type="password" name="newpassword" class="form-control" placeholder="New Password*" required="">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password*" required="">
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Reset My Password" name="update" class="btn btn-block">
+                </div>
+              </form>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    <!-- JavaScript  -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/magnific-popup/magnific-popup.min.js"></script>
+    <script src="lib/sticky/sticky.js"></script>
+    <script src="contact/jqBootstrapValidation.js"></script>
+    <script src="contact/contact_me.js"></script>
+    <script src="js/main.js"></script><!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/interface.js"></script>
+    <!--Switcher-->
+    <script src="assets/switcher/js/switcher.js"></script>
+    <!--bootstrap-slider-JS-->
+    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <!--Slider-JS-->
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+
+</body>
+
+</html>
